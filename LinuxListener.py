@@ -63,5 +63,5 @@ class Listener:
             print(result)
 
 
-my_listener = Listener("192.168.225.141", 4444)
+my_listener = Listener("255.255.255.255", 4444)  # enter the ip address of your device as the first argument and the port number as the second argument.
 my_listener.run()
